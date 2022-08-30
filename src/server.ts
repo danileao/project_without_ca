@@ -1,6 +1,9 @@
+import { EventEmitter } from "node:events"
 import http from 'http'
-import { Order } from './order/order'
 import { OrderService } from './order/order.services'
+
+
+
 
 http
   .createServer(async (request, response) => {
@@ -27,3 +30,4 @@ http
     }
   })
   .listen(3000)
+
