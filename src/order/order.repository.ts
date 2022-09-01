@@ -2,12 +2,12 @@ import { clientPG } from '../utils/database'
 import { Order } from './order'
 
 export class OrderRepository {
-  async create({ document, total }: Order): Promise<void> {
-    const { id, createdAd, isOutDelivery } = new Order(document, total)
+  async create({ document, total, facilityId }: Order): Promise<void> {
+    const { id, createdAd } = new Order(document, total, facilityId)
 
     await clientPG.query(
-      'INSERT INTO ORDERS(ID, TOTAL, CREATED_AT, IS_OUT_DELIVERY, DOCUMENT, facility_id) VALUES ($1, $2, $3, $4, $5, $6)',
-      [id, total, createdAd, isOutDelivery, document, '3c0ed4d6-23f7-11ed-861d-0242ac120002']
+      'INSERT INTO ORDERS(ID, TOTAL, CREATED_AT, DOCUMENT, facility_id) VALUES ($1, $2, $3, $4, $5)',
+      [id, total, createdAd, document, facilityId]
     )
   }
 

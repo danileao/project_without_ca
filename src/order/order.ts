@@ -5,13 +5,13 @@ export class Order {
   document: string
   total: number
   createdAd: Date
-  isOutDelivery: boolean
+  facilityId: string
 
-  constructor(document: string, total: number) {
+  constructor(document: string, total: number, facilityId: string) {
     this.id = randomUUID()
     this.document = document
     this.total = total
     this.createdAd = new Date()
-    this.isOutDelivery = false
+    this.facilityId = facilityId
   }
 }
