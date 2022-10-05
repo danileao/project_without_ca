@@ -3,11 +3,11 @@ import { Order } from './order'
 
 export class OrderRepository {
   async create({ document, total, facilityId }: Order): Promise<void> {
-    const { id, createdAd } = new Order(document, total, facilityId)
+    const { id, createdAt } = new Order(document, total, facilityId)
 
     await clientPG.query(
       'INSERT INTO ORDERS(ID, TOTAL, CREATED_AT, DOCUMENT, facility_id) VALUES ($1, $2, $3, $4, $5)',
-      [id, total, createdAd, document, facilityId]
+      [id, total, createdAt, document, facilityId]
     )
   }
 

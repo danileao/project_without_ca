@@ -5,7 +5,7 @@ export class FacilityService {
   async findById(id: string) {
     try {
       const { rows } = await clientPG.query(
-        'SELECT * FROM FACILITY WHERE id = $1 ',
+        'SELECT id FROM FACILITY WHERE id = $1 ',
         [id]
       )
       if (rows.length > 0) {
